@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: CwIndustries
+  labels:
+    app: CwIndustries
+spec:
+  selector:
+    matchLabels:
+      app: CwIndustries
+  replicas:  1
+  template:
+    metadata:
+      labels:
+        app: CwIndustries
+    spec:
+      containers:
+       - name: CwIndustries
+         image: evolza/CwIndustries:latest
+         imagePullPolicy: Always
+         ports:
+          - containerPort: 8080
+            name: rest
+      imagePullSecrets:
+          - name: notavailable
